@@ -1,0 +1,2 @@
+class InfoOlduser < ApplicationRecord
+end
