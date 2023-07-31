@@ -113,12 +113,24 @@ https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbuk
 | genre_second_id | integer    |                                |
 | genre_third_id  | integer    |                                |
 | profile         | text       |                                |
-| Authentication  | boolean    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- has_one :authentication
+
+##  authentications テーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| authentication  | boolean    | null: false                    |
+| info_olduser_id | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :info_olduser
 
 
 ##  questions テーブル

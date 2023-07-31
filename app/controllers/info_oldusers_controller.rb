@@ -1,0 +1,2 @@
+class InfoOldusersController < ApplicationController
+end

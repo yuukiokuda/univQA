@@ -1,0 +1,2 @@
+module InfoOldusersHelper
+end
