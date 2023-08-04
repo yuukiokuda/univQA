@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :remote => true) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -27,11 +27,13 @@
   </div>
 
   <div class="field">
-    <%= f.collection_select(:prefesture_id , Prefesture.all, :id, :name, {}, {class:"select-box", id:"item-prefesture"}) %>
+    <%= f.label :prefecture_id %>
+    <%= f.collection_select(:prefecture_id , Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture-select"}) %>
   </div>
 
   <div class="field">
-    <%= f.collection_select(:univ_id , Univ.all, :id, :name, {}, {class:"select-box", id:"item-univ"}) %>
+    <%= f.label :univ_id %>
+    <%= f.collection_select(:univ_id,Univ.all,:id, :name, {}, {class:"select-box", id:"univ-select"}) %>
   </div>
 
   <div class="field">
@@ -45,3 +47,22 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const prefectureSelect = document.getElementById("user_prefecture_id");
+  const univSelect = document.getElementById("user_univ_id");
+
+  prefectureSelect.addEventListener("change", function () {
+    const selectedPrefectureId = prefectureSelect.value;
+    fetch(`/univs?prefecture_id=${selectedPrefectureId}`)
+      .then(response => response.json())
+      .then(data => {
+        univSelect.innerHTML = "<option value=''>Select University</option>";
+        data.forEach(univ => {
+          univSelect.innerHTML += `<option value='${univ.id}'>${univ.name}</option>`;
+        });
+      });
+  });
+});
+</script>

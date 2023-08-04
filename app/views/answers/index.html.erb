@@ -1,11 +1,16 @@
-ホーム画面
+<h1>回答するための回答index画面</h1>
 
-<div>
+タイトル：
+<%= @question.title %>
+
+
+
+
 <% @questions.each do |question| %>
 タイトル：
-<%= link_to question.title, question_path(question.id) %>
+<%= question.title %>
 ジャンル：
-<%= Genre.find(question.genre_id).name %> <!-- ジャンル名に変換 -->
+<%= Genre.find(question.genre_id).name %> 
 質問内容：
 <%= question.content %>
     回答期限：
@@ -14,8 +19,10 @@
       <% new_time_object = question.updated_at + days_to_add.days %>
       <%= new_time_object.strftime("%Y-%m-%d") %>
     <% end %>
-    <% if question.image.attached? %>
-      <%= image_tag question.image, class: 'image-class' %>
-    <% end %>
-<%end%>
+<% if question.image.attached? %>
+<%= image_tag question.image, class: 'image-class' %>
+<% end %>
 
+            <%= link_to '回答する', new_answer_path %>
+
+<% end %>

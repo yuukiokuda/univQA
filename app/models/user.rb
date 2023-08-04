@@ -11,4 +11,8 @@ class User < ApplicationRecord
   has_many :comments
   has_one  :info_olduser
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture, class_name: 'Prefecture'
+  belongs_to :univ, class_name: 'Univ'
+
 end

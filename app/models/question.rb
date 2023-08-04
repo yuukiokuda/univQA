@@ -3,7 +3,7 @@ class Question < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :content
-    validates :univcoice
+    # validates :univchoice
     validates :user_id
   end
 

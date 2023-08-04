@@ -4,4 +4,5 @@ class Comment < ApplicationRecord
     validates :user_id
     validates :answer_id
   end
+  belongs_to :answer
 end

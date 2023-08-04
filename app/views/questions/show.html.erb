@@ -1,0 +1,40 @@
+回答するための詳細画面
+タイトル：
+<%= @question.title %>
+ジャンル：
+<%= Genre.find(@question.genre_id).name %> <!-- ジャンル名に変換 -->
+質問内容：
+<%= @question.content %>
+    回答期限：
+    <% if @question.limit_id.present? %>
+      <% days_to_add = @question.limit_id %>
+      <% new_time_object = @question.updated_at + days_to_add.days %>
+      <%= new_time_object.strftime("%Y-%m-%d") %>
+    <% end %>
+<% if @question.image.attached? %>
+<%= image_tag @question.image, class: 'image-class' %>
+<% end %>
+
+<%= link_to '回答する', new_question_answer_path(@question) %>
+
+回答一覧
+<% if @answers.present? %>
+<% @answers.each do |answer| %>
+回答者名：
+<%= User.find(answer.user_id).nickname %>
+質問内容：
+<%= answer.content %>
+投稿日：
+<%= answer.updated_at.strftime('%Y-%m-%d') %>
+<% if answer.image.attached? %>
+<%= image_tag answer.image, class: 'image-class' %>
+<% end %>
+<%= form_with(model: @bestanswer, local: true) do |f| %>
+ベストアンサーに選ぶ→<%= f.check_box :best, {}%>
+<%= f.submit "回答を終了する" %>
+<%end%>
+<%= link_to "返信する", question_answer_path(answer.question, answer) %>
+<% end %>
+<% else %>
+  <p>回答はありません</p>
+<% end %>

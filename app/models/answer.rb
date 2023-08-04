@@ -1,7 +1,6 @@
 class Answer < ApplicationRecord
   with_options presence: true do
     validates :content
-    validates :bestanswer
     validates :user_id
     validates :question_id
   end
@@ -10,4 +9,6 @@ class Answer < ApplicationRecord
 
   belongs_to :user
   belongs_to :question
+  has_many :comments
+  has_one  :bestanswer
 end

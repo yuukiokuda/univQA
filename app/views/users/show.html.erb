@@ -1,0 +1,67 @@
+<p><%= @nickname %>さんについて</p>
+<p>ニックネーム：<%= @nickname %></p>
+<p>大学名：<%= Univ.find(@user.univ_id).name %></p>
+<p><% if @newuser == 1 %>
+  <p>在校生</p>
+<% else %>
+  <p>新入生</p>
+<% end %></p>
+
+<% if @info.present? %>
+<p>学部学科名：<%= @info.faculty %></p>
+<p>得意ジャンル１：<%= Genre.find(@info.genre_first_id).name %></p>
+<p>得意ジャンル２：<%= Genre.find(@info.genre_second_id).name %></p>
+<p>得意ジャンル３：<%= Genre.find(@info.genre_third_id).name %></p>
+<p>プロフィール：<%= @info.profile %></p>
+<% end %>
+
+
+<div class="contents row">
+  <p><%= @nickname %>さんの質問一覧</p>
+<% if @questions.present? %>
+<% @questions.each do |question| %>
+タイトル：
+<%= link_to question.title, question_path(question.id) %>
+ジャンル：
+<%= Genre.find(question.genre_id).name %> <!-- ジャンル名に変換 -->
+質問内容：
+<%= question.content %>
+    回答期限：
+    <% if question.limit_id.present? %>
+      <% days_to_add = question.limit_id %>
+      <% new_time_object = question.updated_at + days_to_add.days %>
+      <%= new_time_object.strftime("%Y-%m-%d") %>
+    <% end %>
+    <% if question.image.attached? %>
+      <%= image_tag question.image, class: 'image-class' %>
+    <% end %>
+<%end%>
+<% else %>
+  <p>質問はありません</p>
+<% end %>
+</div>
+
+
+  <p><%= @nickname %>さんの回答一覧</p>
+<% if @answers.present? %>
+<% @answers.each do |answer| %>
+回答者名：
+<%= User.find(answer.user_id).nickname %>
+質問内容：
+<%= answer.content %>
+投稿日：
+<%= answer.updated_at.strftime('%Y-%m-%d') %>
+<% if answer.image.attached? %>
+<%= image_tag answer.image, class: 'image-class' %>
+<% end %>
+<% end %>
+<% else %>
+  <p>回答はありません</p>
+<% end %>
+
+ユーザー情報の編集
+<% if @info.present? %>
+<%= link_to "先輩学生情報の修正", edit_info_olduser_path(current_user.id) %>
+<% else %>
+<%= link_to "先輩学生情報の追加", new_info_olduser_path(current_user.id) %>
+<% end %>

@@ -1,0 +1,49 @@
+回答の詳細
+タイトル：
+<%= @question.title %>
+ジャンル：
+<%= Genre.find(@question.genre_id).name %> <!-- ジャンル名に変換 -->
+質問内容：
+<%= @question.content %>
+    回答期限：
+    <% if @question.limit_id.present? %>
+      <% days_to_add = @question.limit_id %>
+      <% new_time_object = @question.updated_at + days_to_add.days %>
+      <%= new_time_object.strftime("%Y-%m-%d") %>
+    <% end %>
+<% if @question.image.attached? %>
+<%= image_tag @question.image, class: 'image-class' %>
+<% end %>
+
+回答
+回答者名：
+<%= User.find(@answer.user_id).nickname %>
+質問内容：
+<%= @answer.content %>
+投稿日：
+<%= @answer.updated_at.strftime('%Y-%m-%d') %>
+<% if @answer.image.attached? %>
+<%= image_tag @answer.image, class: 'image-class' %>
+<% end %>
+
+
+<h4>コメント一覧</h4>
+<% if @comments.present? %>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= User.find(comment.user_id).nickname %>：</strong>
+          <%= comment.content %>
+        </p>
+      <% end %>
+    <% else %>
+          <strong><p>コメントはありません</p></strong>
+    <% end %>
+<br>コメントここから<br>
+    <% if user_signed_in? %>
+      <%= form_with(model: [@answer, @comment], url: question_answer_comments_path(@question, @answer),local: true) do |f| %>
+        <%= f.text_area :content, placeholder: "コメントする", rows: "2" %>
+        <%= f.submit "SEND" %>
+      <% end %>
+    <% else %>
+          <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>

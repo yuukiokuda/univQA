@@ -1,0 +1,2 @@
+<%= f.label :univ_id %><br>
+<%= f.collection_select (:city_id, Prefecture.where(prefecture_id: prefecture_id), :id, :name) %>

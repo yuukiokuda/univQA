@@ -89,7 +89,7 @@ https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbuk
 | nickname           | string  | null: false |
 | email              | string  | null: false |
 | encrypted_password | string  | null: false |
-| prefesture_id      | integer | null: false |
+| prefecture_id      | integer | null: false |
 | univ_id            | integer | null: false |
 | newuser            | boolean | null: false |
 

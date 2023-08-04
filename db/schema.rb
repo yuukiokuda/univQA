@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_090630) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_155639) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,7 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_090630) do
 
   create_table "answers", charset: "utf8", force: :cascade do |t|
     t.text "content", null: false
-    t.boolean "bestanswer"
     t.bigint "user_id", null: false
     t.bigint "question_id", null: false
     t.datetime "created_at", null: false
@@ -56,6 +55,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_090630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["info_olduser_id"], name: "index_authentications_on_info_olduser_id"
+  end
+
+  create_table "bestanswers", charset: "utf8", force: :cascade do |t|
+    t.boolean "best"
+    t.bigint "answer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_bestanswers_on_answer_id"
   end
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
@@ -96,7 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_090630) do
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "prefesture_id", null: false
+    t.integer "prefecture_id", null: false
     t.integer "univ_id", null: false
     t.boolean "newuser", null: false
     t.string "reset_password_token"
@@ -113,6 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_090630) do
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "authentications", "info_oldusers"
+  add_foreign_key "bestanswers", "answers"
   add_foreign_key "comments", "answers"
   add_foreign_key "comments", "users"
   add_foreign_key "info_oldusers", "users"
