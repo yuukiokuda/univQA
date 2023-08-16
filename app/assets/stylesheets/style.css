@@ -1,0 +1,269 @@
+/* リセットCSS */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+ul,
+li,
+h1,
+h2,
+p,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
+  color: #3b4043;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: #3b4043;
+}
+
+/* ヘッダー */
+
+.header {
+  background-color: #f1f8fe;
+  margin-bottom: 48px;
+  padding: 20px 0;
+
+}
+.inner {
+  width: 1024px;
+  margin: 0 auto;
+}
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  width: 200px;
+}
+.nav__btn{
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #87CEFA;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #87CEFA solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+}
+.nav__btn:hover{
+  color: #fff;
+  background: #87CEFA;
+}
+
+.nav__logout{
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #87CEFA;
+  text-decoration: none;
+  user-select: none;
+}
+.nav__logout:hover{
+  opacity: 0.5;
+}
+
+a{
+  text-decoration: none;
+}
+/* ヘッダー */
+header{
+  height: auto;
+  width: 100%;
+}
+.head_icon{
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: #B1E1AF;
+}
+
+.back{
+  height: 30px;
+  width: 30px;
+}
+.head_names{
+  display: flex;
+
+}
+.head_name{
+  margin-right: 10px;
+}
+.head_newuser{
+margin-right: 10px;
+}
+
+/* フッター */
+footer{
+  width: 100%;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+
+.icon{
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #B1E1AF;
+}
+.icon_image{
+  margin: 20px 30px;
+  height: 50px;
+  width: 50px;
+}
+.icon_image_q{  
+  margin: 0px 10px 10px 10px;
+  padding: 10px 20px 5px 20px;
+  background-color: #FFFABC;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+.icon_name{
+  margin-top: 5px;
+  text-align: center;
+  font-size: 10px;
+  width: 50px;
+}
+.icon_name_q{
+  margin: 5px 5px 10px 2px;
+  text-align: center;
+  font-size: 10px;
+  width: 50px;
+}
+
+/* ホーム画面 */
+/* question/index */
+
+.non_answer_main{
+  padding: 0px 10px;
+  margin: 20px 40px;
+  border: 1px solid silver;
+  border-radius: 20px;
+  /* box-shadow: x軸 y軸 ぼかし量 ぼかしボックスの拡大縮小 影の色; */
+  box-shadow: 5px 5px 0px 0 #8e959a;
+}
+.non_answer_sub{
+}
+.head_items{
+  display: flex;
+  justify-content: space-between;
+}
+.main_genre{
+}
+.main_univ{
+}
+.main_title{
+  height: 70px;
+  width: 90%;
+  margin-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 40px;
+  text-decoration: underline;
+}
+.foot_items{
+  display: flex;
+  justify-content: space-between;
+}
+.foot_sub_item{
+  display: flex;
+  justify-content: space-around;
+}
+.hurt{
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+.hurt_qty{
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+.comment{
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+.comment_qty{
+  height: 20px;
+  width: 20px;
+}
+.main_limit{
+}
+
+
+/* 質問投稿画面 */
+/* question/new */
+.question_new_main{
+  height: (100vh-100px);
+  width: 100vw;
+}
+.question_new_head{
+  font-size: 50px;
+  width: 80%;
+  height: 100px;
+  text-align: center;
+  margin: 0 auto;
+}
+.question_new_form{
+  margin: 0 auto;
+
+}
+.question_new_title{
+  margin: 0 auto;
+  text-align: center;
+}
+.question_new_genre{
+  margin: 0 auto;
+  text-align: center;
+}
+.question_new_content{
+  margin: 0 auto;
+  text-align: center;
+}
+.question_new_limit{
+  margin: 0 auto;
+  text-align: center;
+}
+.question_new_selects{
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.question_new_image{
+  margin: 0 auto;
+  text-align: center;
+}
+.question_new_univchoice{
+  margin: 0 auto;
+  text-align: center;
+  height: 10vw;
+}
+.question_new_submit{
+  margin: 0 auto;
+  text-align: center;
+}

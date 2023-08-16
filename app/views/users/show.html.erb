@@ -65,3 +65,5 @@
 <% else %>
 <%= link_to "先輩学生情報の追加", new_info_olduser_path(current_user.id) %>
 <% end %>
+
+                <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>

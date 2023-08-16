@@ -5,42 +5,63 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-<%= link_to :back do %>
-  <button>戻る</button>
-<% end %>
-<%= link_to "トップへ", root_path %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <div class="head_icon">
+      <%= link_to :back do %>
+        <%= image_tag("back.png", class: :back) %>
+      <% end %>
+      <div class="head_names">
+        <div class="head_name">
+          <%= current_user.nickname %>
+        </div>
+        <div class="head_newuser">
+          <% if @newuser == 1 %>
+            在校生
+          <% else %>
+            新入生
+          <% end %>
+        </div>
+      </div>
+    </div>
   </head>
-
-  ----------------------------------
-  
 
   <body>
     <%= yield %>
   </body>
 
-------------------------------------
+  <footer>
+    <div class="icon">
+      <div class="icon_image">
+        <%= link_to image_tag("home.png", class: :image), root_path %>
+        <div class="icon_name">
+        ホーム
+        </div>
+      </div>
+      <div class="icon_image">
+        <%= link_to image_tag("search.png", class: :image), root_path %>
+        <div class="icon_name">
+        検索
+        </div>
+      </div>
+      <div class="icon_image_q">
+        <%= link_to image_tag("question.png", class: :image), new_question_path %>
+        <div class="icon_name_q">
+        質問する
+        </div>
+      </div>
+      <div class="icon_image">
+        <%= link_to image_tag("message.png", class: :image), root_path %>
+        <div class="icon_name">
+        やりとり
+        </div>
+      </div>
+      <div class="icon_image">
+        <%= link_to image_tag("mypage.png", class: :image), "/users/#{current_user.id}" %>
+        <div class="icon_name">
+        マイページ
+        </div>
+      </div>
+  </footer>
 
-<footer>
-  <% if user_signed_in? %>
-          <div class="user_nav grid-6">
-           <span><%= current_user.nickname %>
-            <ul class="user__info">
-              <li>
-                <%= link_to "マイページ", "/users/#{current_user.id}" %>
-                <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
-              </li>
-            </ul>
-          </span>
-            <%= link_to "投稿する", new_question_path, class: "post" %>
-          </div>
-        <% else %>
-          <div class="grid-6">
-            <%= link_to "ログイン", new_user_session_path, class: "post" %>
-            <%= link_to "新規登録", new_user_registration_path, class: "post" %>
-          </div>
-        <% end %>
-</footer>
-</div>
 </html>

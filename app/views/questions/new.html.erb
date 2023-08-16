@@ -1,13 +1,29 @@
-<h1>投稿画面</h1>
-
-    <h3>投稿する</h3>
-    <%= form_with(model: @question, local: true) do |f| %>
+<div class="question_new_main">
+  <div class="question_new_head">質問してみよう</div>
+  <div class="question_new_form">
+  <%= form_with(model: @question, local: true) do |f| %>
+    <div class="question_new_title">
       <%= f.text_field :title, placeholder: "タイトル" %>
+    </div>
+    <div class="question_new_genre">
       <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"item-genre"}) %>
-      <%= f.text_field :content, placeholder: "質問内容" %>
+    </div>
+    <div class="question_new_content">
+      <%= f.text_area :content, placeholder: "質問内容" %>
+    </div>
+    <div class="question_new_limit">
       <%= f.collection_select(:limit_id, Limit.all, :id, :name, {}, {class:"select-box", id:"item-limit"}) %>
-      同大学の先輩に回答を限定する→<%= f.check_box :univchoice, {}%>
-      <%= f.file_field :image, placeholder: "画像" %>
+    </div>
+    <div class="question_new_selects">
+      <div class="question_new_image">
+        <%= f.file_field :image, placeholder: "画像" %>
+      </div>
+      <div class="question_new_univchoice">
+        同大学の先輩に回答を限定する→<%= f.check_box :univchoice, {}%>
+      </div>
+    </div>
+    <div class="question_new_submit">
       <%= f.submit "投稿する" %>
-    <% end %>
+    </div>
+  <% end %>
 
