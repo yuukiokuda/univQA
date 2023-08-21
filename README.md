@@ -1,5 +1,5 @@
 # アプリケーション名
-未定
+UMA (Univ Mentor Ask)
 # アプリケーション概要
 - 大学新入学期の不安や悩みを解決したい新入生と保護者のための、現役先輩学生に直接質問できるQ＆Aアプリである
 - ユーザーは信頼できるアドバイザーと出会うことで、不安や悩みを解決することができ、既存のサービスにはない、大学新入学期特化であり、回答者は非匿名であることが特徴。
@@ -57,9 +57,10 @@ https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbuk
 # 実装予定の機能
 - いいね機能
 - 学生証認証機能
+- DM機能
 
 # データベース設計
-[![Image from Gyazo](https://i.gyazo.com/d04274466f2ac5598a19ec998354455d.png)](https://gyazo.com/d04274466f2ac5598a19ec998354455d)
+[![Image from Gyazo](https://i.gyazo.com/e6e73f375d2fc5debd4b655ceea47013.png)](https://gyazo.com/e6e73f375d2fc5debd4b655ceea47013)
 
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/2e9e06ed665eeacf7ea931677276ea60.png)](https://gyazo.com/2e9e06ed665eeacf7ea931677276ea60)
@@ -78,7 +79,7 @@ https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbuk
 
 # 工夫したポイント
 - ユーザー登録を新入生保護者と先輩学生に分けるために、データベース設計時にusersテーブルにboolean型のnewuserカラムを設定し、別テーブルとしてinfo_oldusersテーブルを用意しました。こうすることで、テーブルに無駄な空データを作られないよう工夫をしました。
-- 可読性を高めるため、リファクタリングや部分テンプレートを積極的に設定するよう意識しました。
+<!-- - 可読性を高めるため、リファクタリングや部分テンプレートを積極的に設定するよう意識しました。 -->
 
 # テーブル設計
 
@@ -155,7 +156,6 @@ https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbuk
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | content    | text       | null: false                    |
-| bestanswer | boolean    | null: false                    |
 | user       | references | null: false, foreign_key: true |
 | question   | references | null: false, foreign_key: true |
 
@@ -164,6 +164,19 @@ https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbuk
 - belongs_to :user
 - belongs_to :question
 - has_many   :comments
+- has_one    :bestanswer
+
+
+##  bestanswers テーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| bestanswer | boolean    | null: false                    |
+| answer     | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :answer
 
 
 ##  comments テーブル
