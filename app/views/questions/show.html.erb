@@ -55,7 +55,11 @@
 <div class="answer_main">
   <div class="answer_user_infos">
     <div class="answer_user_image">
-      <%= image_tag("icon1.png") %>
+      <% if answer.user.image.attached? %>
+        <%= image_tag answer.user.image %>
+      <% else %>
+        <%= image_tag("icon1.png") %>
+      <% end %>
     </div>
     <div class="answer_user_info">
       <div class="answer_univ">

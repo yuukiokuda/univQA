@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :answers
   has_many :comments
   has_one  :info_olduser
+  has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture, class_name: 'Prefecture'
