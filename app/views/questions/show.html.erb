@@ -1,39 +1,95 @@
-回答するための詳細画面
-タイトル：
-<%= @question.title %>
-ジャンル：
-<%= Genre.find(@question.genre_id).name %> <!-- ジャンル名に変換 -->
-質問内容：
-<%= @question.content %>
-    回答期限：
-    <% if @question.limit_id.present? %>
-      <% days_to_add = @question.limit_id %>
-      <% new_time_object = @question.updated_at + days_to_add.days %>
-      <%= new_time_object.strftime("%Y-%m-%d") %>
-    <% end %>
-<% if @question.image.attached? %>
-<%= image_tag @question.image, class: 'image-class' %>
-<% end %>
+<div class="question_show_main">
+  <div class="head_items">
+    <div class="main_genre">
+      ジャンル：<%= Genre.find(@question.genre_id).name %> <!-- ジャンル名に変換 -->
+    </div>
+    <div class="main_univ">
+      <%= Univ.find(@question.user.univ_id).name %>
+    </div>
+  </div>
+  <div class="main_title">
+    <%= @question.title %>
+  </div>
+  <div class="main_question_date">
+    投稿日：<%= @question.updated_at.strftime('%Y-%m-%d') %>
+  </div>
+  <div class="main_items">
+    <div class="main_content">
+      <%= @question.content %>
+    </div>
+    <div class="main_content_image">
+      <% if @question.image.attached? %>
+        <%= image_tag @question.image, class: 'image-class' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="foot_items">
+    <div class="foot_sub_item">
+      <%= image_tag("hurt.png", class: :hurt) %>
+      <div class="hurt_qty">
+      2
+      </div>
+      <%= image_tag("comment.png", class: :comment) %>
+      <div class="comment_qty">
+      1
+      </div>
+    </div>
+    <div class="main_limit">
+      回答期限：
+        <% if @question.limit_id.present? %>
+          <% days_to_add = @question.limit_id %>
+          <% new_time_object = @question.updated_at + days_to_add.days %>
+          <%= new_time_object.strftime("%Y-%m-%d") %>
+        <% end %>
+    </div>
+  </div>
+</div>
 
-<%= link_to '回答する', new_question_answer_path(@question) %>
+<div class="question_show_answer">
+  <%= link_to '回答する', new_question_answer_path(@question) %>
+</div>
 
-回答一覧
+
 <% if @answers.present? %>
 <% @answers.each do |answer| %>
-回答者名：
-<%= User.find(answer.user_id).nickname %>
-質問内容：
-<%= answer.content %>
-投稿日：
-<%= answer.updated_at.strftime('%Y-%m-%d') %>
+<div class="answer_main">
+  <div class="answer_user_infos">
+    <div class="answer_user_image">
+      <%= image_tag("icon1.png") %>
+    </div>
+    <div class="answer_user_info">
+      <div class="answer_univ">
+        <%= Univ.find(answer.user.univ_id).name %>
+      </div>
+      <div class="answer_nickname">
+        <%= User.find(answer.user_id).nickname %>
+      </div>
+      <div class="answer_nickname">
+        <%= User.find(answer.user_id).nickname %>
+      </div>
+      <div class="answer_nickname">
+        <%= User.find(answer.user_id).nickname %>
+      </div>
+      <div class="answer_date">
+        投稿日：<%= answer.updated_at.strftime('%Y-%m-%d') %>
+      </div>
+    </div>
+  </div>
+  <div class="answer_content">
+    <%= answer.content %>
+  </div>
 <% if answer.image.attached? %>
 <%= image_tag answer.image, class: 'image-class' %>
 <% end %>
-<%= form_with(model: @bestanswer, local: true) do |f| %>
+
+<!-- 回答を終了する件について -->
+<!--<%= form_with(model: @bestanswer, local: true) do |f| %>
 ベストアンサーに選ぶ→<%= f.check_box :best, {}%>
 <%= f.submit "回答を終了する" %>
-<%end%>
-<%= link_to "返信する", question_answer_path(answer.question, answer) %>
+<% end %> -->
+
+<%= link_to "コメントを見る", question_answer_path(answer.question, answer) %>
+</div>
 <% end %>
 <% else %>
   <p>回答はありません</p>

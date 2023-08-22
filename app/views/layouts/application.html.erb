@@ -7,26 +7,31 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <div class="head_icon">
-      <%= link_to :back do %>
-        <%= image_tag("back.png", class: :back) %>
-      <% end %>
-      <div class="head_names">
-        <div class="head_name">
-          <%= current_user.nickname %>
-        </div>
-        <div class="head_newuser">
-          <% if @newuser == 1 %>
-            在校生
-          <% else %>
-            新入生
-          <% end %>
-        </div>
-      </div>
-    </div>
   </head>
 
   <body>
+    <header class="header">
+      <div class="head_icon">
+        <%= link_to :back do %>
+          <%= image_tag("back.png", class: :back) %>
+        <% end %>
+        <div class="head_names">
+          <% if user_signed_in? %>
+          <div class="head_name">
+            <%= current_user.nickname %>
+          </div>
+          <div class="head_newuser">
+            <% if current_user.newuser == true %>
+              在校生
+            <% else %>
+              新入生
+            <% end %>
+          </div>
+        </div>
+        <% else %>
+        <% end %>
+    </div>
+    </header>
     <%= yield %>
   </body>
 
@@ -45,10 +50,10 @@
         </div>
       </div>
       <div class="icon_image_q">
-        <%= link_to image_tag("question.png", class: :image), new_question_path %>
         <div class="icon_name_q">
         質問する
         </div>
+        <%= link_to image_tag("question.png", class: :image), new_question_path %>
       </div>
       <div class="icon_image">
         <%= link_to image_tag("message.png", class: :image), root_path %>
@@ -57,9 +62,13 @@
         </div>
       </div>
       <div class="icon_image">
-        <%= link_to image_tag("mypage.png", class: :image), "/users/#{current_user.id}" %>
+        <% if user_signed_in? %>
+          <%= link_to image_tag("mypage.png", class: :image), "/users/#{current_user.id}" %>
+        <% else %>
+          <%= link_to image_tag("mypage.png", class: :image), new_user_session_path %>
+        <% end %>
         <div class="icon_name">
-        マイページ
+        My
         </div>
       </div>
   </footer>
