@@ -53,3 +53,6 @@ production:
   database: univQA_production
   username: univQA
   password: <%= ENV["UNIVQA_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
