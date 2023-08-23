@@ -1,5 +1,7 @@
 # アプリケーション名
 UMA (Univ Mentor Ask)
+もしくは
+KEY TO ME ~key to success~
 # アプリケーション概要
 - 大学新入学期の不安や悩みを解決したい新入生と保護者のための、現役先輩学生に直接質問できるQ＆Aアプリである
 - ユーザーは信頼できるアドバイザーと出会うことで、不安や悩みを解決することができ、既存のサービスにはない、大学新入学期特化であり、回答者は非匿名であることが特徴。
@@ -52,12 +54,15 @@ UMA (Univ Mentor Ask)
 https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbukD2g/edit#gid=0
 
 # 実装した機能について
-
+- ホーム画面と質問投稿、回答投稿、コメント機能
+- プロフィール表示機能
 
 # 実装予定の機能
 - いいね機能
 - 学生証認証機能
 - DM機能
+- 検索機能
+
 
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/e6e73f375d2fc5debd4b655ceea47013.png)](https://gyazo.com/e6e73f375d2fc5debd4b655ceea47013)
