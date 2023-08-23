@@ -68,12 +68,6 @@
       <div class="answer_nickname">
         <%= User.find(answer.user_id).nickname %>
       </div>
-      <div class="answer_nickname">
-        <%= User.find(answer.user_id).nickname %>
-      </div>
-      <div class="answer_nickname">
-        <%= User.find(answer.user_id).nickname %>
-      </div>
       <div class="answer_date">
         投稿日：<%= answer.updated_at.strftime('%Y-%m-%d') %>
       </div>
@@ -82,17 +76,19 @@
   <div class="answer_content">
     <%= answer.content %>
   </div>
-<% if answer.image.attached? %>
-<%= image_tag answer.image, class: 'image-class' %>
-<% end %>
-
-<!-- 回答を終了する件について -->
-<!--<%= form_with(model: @bestanswer, local: true) do |f| %>
-ベストアンサーに選ぶ→<%= f.check_box :best, {}%>
-<%= f.submit "回答を終了する" %>
-<% end %> -->
-
-<%= link_to "コメントを見る", question_answer_path(answer.question, answer) %>
+  <div class="answer_image">
+    <% if answer.image.attached? %>
+      <%= image_tag answer.image, class: 'image-class' %>
+    <% end %>
+  </div>
+    <!-- 回答を終了する件について -->
+    <!--<%= form_with(model: @bestanswer, local: true) do |f| %>
+      ベストアンサーに選ぶ→<%= f.check_box :best, {}%>
+      <%= f.submit "回答を終了する" %>
+      <% end %> -->
+  <div class="answer_comment">
+    <%= link_to "コメントを見る", question_answer_path(answer.question, answer) %>
+  </div>
 </div>
 <% end %>
 <% else %>
