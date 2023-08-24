@@ -1,6 +1,6 @@
 class Limit < ActiveHash::Base
   self.data = [
-    { id: 0, name: '選択してください' },
+    { id: 0, name: '期限を決めてください' },
     { id: 1, name: '1日後' },
     { id: 2, name: '2日後' },
     { id: 3, name: '3日後' },

@@ -19,7 +19,10 @@
         <%= f.file_field :image, placeholder: "画像" %>
       </div>
       <div class="question_new_univchoice">
-        同大学の先輩に回答を限定する→<%= f.check_box :univchoice, {}%>
+        <p>同大学の先輩に回答を限定する→</p>
+        <div class="checkbox">
+          <%= f.check_box :univchoice, {}%>
+        </div>
       </div>
     </div>
     <div class="question_new_submit">
