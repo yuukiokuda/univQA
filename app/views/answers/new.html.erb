@@ -1,12 +1,57 @@
-<h1>回答画面</h1>
-
-    <h3>回答する</h3>
-タイトル：<%= @question.title %>
-内容：<%= @question.content %>
+<h3>回答する</h3>
+<div class="question_show_main">
+  <div class="head_items">
+    <div class="main_genre">
+      ジャンル：<%= Genre.find(@question.genre_id).name %> <!-- ジャンル名に変換 -->
+    </div>
+    <div class="main_univ">
+      <%= Univ.find(@question.user.univ_id).name %>
+    </div>
+  </div>
+  <div class="main_title">
+    <%= @question.title %>
+  </div>
+  <div class="main_question_date">
+    投稿日：<%= @question.updated_at.strftime('%Y-%m-%d') %>
+  </div>
+  <div class="main_items">
+    <div class="main_content">
+      <div class="main_content_sub">
+        質問内容
+      </div>
+      <%= @question.content %>
+    </div>
+    <div class="main_content_image">
+      <% if @question.image.attached? %>
+        <%= image_tag @question.image, class: 'image-class' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="foot_items">
+    <div class="foot_sub_item">
+      <%= image_tag("hurt.png", class: :hurt) %>
+      <div class="hurt_qty">
+      2
+      </div>
+      <%= image_tag("comment.png", class: :comment) %>
+      <div class="comment_qty">
+      1
+      </div>
+    </div>
+    <div class="main_limit">
+      回答期限：
+        <% if @question.limit_id.present? %>
+          <% days_to_add = @question.limit_id %>
+          <% new_time_object = @question.updated_at + days_to_add.days %>
+          <%= new_time_object.strftime("%Y-%m-%d") %>
+        <% end %>
+    </div>
+  </div>
+</div>
 
 
     <%= form_with(model: @answer,url: question_answers_path(@question), local: true) do |f| %>
-      <%= f.text_field :content, placeholder: "回答内容" %>
+      <%= f.text_area :content, placeholder: "回答内容" %>
       <%= f.file_field :image, placeholder: "画像" %>
       <%= f.submit "回答する" %>
       

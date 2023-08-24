@@ -15,6 +15,9 @@
   </div>
   <div class="main_items">
     <div class="main_content">
+      <div class="main_content_sub">
+        質問内容
+      </div>
       <%= @question.content %>
     </div>
     <div class="main_content_image">
@@ -43,11 +46,20 @@
         <% end %>
     </div>
   </div>
+    <% if user_signed_in? && current_user.id == @question.user_id %>
+      <div class="delete">
+        <%= link_to '削除', question_path(@question.id), data: { turbo_method: :delete } %>
+      </div>
+    <% end %>
 </div>
 
-<div class="question_show_answer">
-  <%= link_to '回答する', new_question_answer_path(@question) %>
-</div>
+<% if user_signed_in? && current_user.id == @question.user_id %>
+
+<% else %>
+  <div class="question_show_answer">
+    <%= link_to '回答する', new_question_answer_path(@question) %>
+  </div>
+<% end %>
 
 
 <% if @answers.present? %>

@@ -50,6 +50,10 @@ KEY TO ME ~key to success~
 前職の経験を活かし、大学入学前の新入生保護者の不安を解決したいと考えた。「大学入学のスタートダッシュを後悔なく切って欲しい」と言う想いがある。
 大学入学前は多種多様な不安事、悩み事が多く、どこに相談すればいいのかわからないという声が多い。新入生保護者が在学中の先輩学生に、直接相談できる場所があればこのような不安が解決できると推測し、大学入学期に特化したQ＆Aアプリを開発することにした。
 
+# アプリケーションのイメージ（PDF）
+https://acrobat.adobe.com/id/urn:aaid:sc:AP:d72286d8-cbc2-443b-a4ab-324e4fb8bf3b
+※閲覧にはadobeアカウントが必要です。
+
 # 洗い出した要件
 https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbukD2g/edit#gid=0
 
@@ -62,6 +66,7 @@ https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbuk
 - 学生証認証機能
 - DM機能
 - 検索機能
+- ユーザーが新入生保護者なのか先輩学生なのかで表示される項目が変わる
 
 
 # データベース設計
