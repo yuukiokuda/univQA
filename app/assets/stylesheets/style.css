@@ -29,6 +29,8 @@ body {
   max-width: 800px; /* PCでも一定の大きさを保つ */
   margin: 0 auto;
   min-height: 100vh;
+  padding-bottom: 80px;
+  padding-top: 30px;
 }
 
 li {
@@ -101,19 +103,22 @@ header{
 }
 .head_icon{
   /* width: 100vw; */
-  /* position: fixed; */
+  position: fixed;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #B1E1AF;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
   max-width: 800px; /* PCでも一定の大きさを保つ */
   margin: 0 auto;
+  /* height: 32px; */
 }
 
 .back{
   height: 30px;
   width: 30px;
+  margin-left: 10px;
 }
 .head_names{
   display: flex;
@@ -121,10 +126,13 @@ header{
 .head_name{
   margin-right: 10px;
   margin-top: auto;
+  margin-bottom: auto;
 }
 .head_newuser{
   margin-right: 10px;
   margin-top: auto;
+  margin-bottom: auto;
+
 }
 
 
@@ -132,7 +140,7 @@ header{
 footer{
   /* height: 30px;
   width: 100%; */
-  position: absolute;/* ←絶対位置 */
+  position: fixed;/* ←絶対位置 */
   bottom: 0; /* 下に固定 */
   width: 100%;
   display: flex;
@@ -141,15 +149,14 @@ footer{
   padding: 1rem 0;
   max-width: 800px; /* PCでも一定の大きさを保つ */
   margin: 0 auto;
+  height: 80px; /* 高さを決めておく */
 }
 
 .icon{
-  margin-top: 5px;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
-  background-color: #B1E1AF;
 }
 .icon_image{
   margin: 5px 0px;
@@ -157,25 +164,25 @@ footer{
   width: 15%;
 }
 .image{
-  width: 50%;
+  width: 70%;
   height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-.icon_name{
+/* .icon_name{
   margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  font-size: 16px;
+  font-size: 8px;
   width: 100%;
-}
+} */
 .icon_image_q{  
   background-color: #FFFABC;
-  margin: 1px 0px 5px;
-  width: 15%;
   border-radius: 30%;
+  height: auto;
+  width: 20%;
 }
 .image_q{
   width: 50%;
@@ -184,15 +191,14 @@ footer{
   margin-left: auto;
   margin-right: auto;
 }
-.icon_name_q{
-  /* margin: 5px 5px 10px 2px; */
+/* .icon_name_q{
   margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  font-size: 16px;
+  font-size: 8px;
   width: 100%;
-}
+} */
 
 /* ホーム画面 */
 /* question/index */
@@ -212,10 +218,10 @@ footer{
   justify-content: space-between;
 }
 .main_genre{
-  font-size: 10px;
+  font-size: 8px;
 }
 .main_univ{
-  font-size: 10px;
+  font-size: 8px;
 
 }
 .main_title{
@@ -225,7 +231,7 @@ footer{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 20px;
+  font-size: 24px;
   text-decoration: underline;
 }
 .foot_items{
@@ -244,7 +250,7 @@ footer{
 .hurt_qty{
   height: 15px;
   width: 15px;
-  font-size: 10px;
+  font-size: 8px;
   margin-right: 5px;
 }
 .comment{
@@ -255,10 +261,10 @@ footer{
 .comment_qty{
   height: 15px;
   width: 15px;
-  font-size: 10px;
+  font-size: 8px;
 }
 .main_limit{
-  font-size: 10px;
+  font-size: 8px;
 }
 
 /* 投稿詳細画面 */
@@ -272,7 +278,7 @@ footer{
   box-shadow: 1px 1px 0px 0 #8e959a;
 }
 .main_question_date{
-  font-size: 5px;
+  font-size: 8px;
   text-align: right;
 }
 
@@ -287,10 +293,10 @@ footer{
   width: 100%;
   margin-left: 5px;
   margin-right: 5px;
-  font-size: 15px;
+  font-size: 16px;
 }
 .main_content_sub{
-  font-size: 5px;
+  font-size: 8px;
   text-decoration: underline;
 }
 .main_content_image{
@@ -318,8 +324,8 @@ footer{
   border-radius: 20px;
   border: 0;
   font-size: 18px;
-  width: 100%;
-  margin: 5px 0 15px;
+  width: 80%;
+  margin: 5px auto 15px;
   padding: 10px;
   border: 1px solid #D8D8D8;
   font-family: "游ゴシック", "YuGothic";
@@ -348,13 +354,13 @@ footer{
   margin-left: 10px;
 }
 .answer_univ{
-  font-size: 5px;
+  font-size: 8px;
 }
 .answer_nickname{
 
 }
 .answer_date{
-  font-size: 5px;
+  font-size: 8px;
   text-align: right;
 }
 .answer_content{
@@ -365,7 +371,7 @@ footer{
   width: 70%;
 }
 .answer_comment{
-  font-size: 5px;
+  font-size: 8px;
   font-weight: 600;
   width: 50%;
   text-align: center;
@@ -376,54 +382,13 @@ footer{
 /* 質問投稿画面 */
 /* question/new */
 .question_new_main{
-  height: (100vh-100px);
-  width: 100vw;
 }
 .question_new_head{
-  font-size: 50px;
+  font-size: 32px;
   width: 80%;
   height: 100px;
   text-align: center;
   margin: 0 auto;
-}
-.question_new_form{
-  margin: 0 auto;
-
-}
-.question_new_title{
-  margin: 0 auto;
-  text-align: center;
-}
-.question_new_genre{
-  margin: 0 auto;
-  text-align: center;
-}
-.question_new_content{
-  margin: 0 auto;
-  text-align: center;
-}
-.question_new_limit{
-  margin: 0 auto;
-  text-align: center;
-}
-.question_new_selects{
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-}
-.question_new_image{
-  margin: 0 auto;
-  text-align: center;
-}
-.question_new_univchoice{
-  margin: 0 auto;
-  text-align: center;
-  height: 10vw;
-}
-.question_new_submit{
-  margin: 0 auto;
-  text-align: center;
 }
 
 form input,
