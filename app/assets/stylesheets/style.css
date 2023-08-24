@@ -16,11 +16,19 @@ div {
 }
 
 body {
-  margin: 40px 10px 200px 10px;
-  padding: 0;
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #ffffff;
   letter-spacing : 0.2em;
+  min-height: 100vh;
+}
+.body__container{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  width: 100%;
+  max-width: 800px; /* PCでも一定の大きさを保つ */
+  margin: 0 auto;
+  min-height: 100vh;
 }
 
 li {
@@ -93,13 +101,14 @@ header{
 }
 .head_icon{
   /* width: 100vw; */
-  position: fixed;
-  left: 0;
-  top: 0;
+  /* position: fixed; */
   width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #B1E1AF;
+  padding: 1rem 0;
+  max-width: 800px; /* PCでも一定の大きさを保つ */
+  margin: 0 auto;
 }
 
 .back{
@@ -120,16 +129,18 @@ header{
 
 /* フッター */
 footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  margin: 0;
-  padding: 0;
   /* height: 30px;
   width: 100%; */
   /* position: absolute;/*←絶対位置*/
   /* bottom: 0; 下に固定 */ 
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #B1E1AF;
+  padding: 1rem 0;
+  max-width: 800px; /* PCでも一定の大きさを保つ */
+  margin: 0 auto;
 }
 
 .icon{

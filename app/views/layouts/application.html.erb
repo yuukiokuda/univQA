@@ -9,6 +9,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
+
+    <div class="body__container">
   <body>
     <header class="header">
       <div class="head_icon">
@@ -32,45 +34,50 @@
         <% end %>
     </div>
     </header>
-    <%= yield %>
-  </body>
 
-  <footer>
-    <div class="icon">
-      <div class="icon_image">
-        <%= link_to image_tag("home.png", class: :image), root_path %>
+
+      <%= yield %>
+
+
+    <footer>
+      <div class="icon">
+        <div class="icon_image">
+          <%= link_to image_tag("home.png", class: :image), root_path %>
+          <div class="icon_name">
+          ホーム
+          </div>
+        </div>
+        <div class="icon_image">
+          <%= link_to image_tag("search.png", class: :image), root_path %>
+          <div class="icon_name">
+          検索
+          </div>
+        </div>
+        <div class="icon_image_q">
+          <div class="icon_name_q">
+          質問する
+          </div>
+          <%= link_to image_tag("question.png", class: :image), new_question_path %>
+        </div>
+        <div class="icon_image">
+          <%= link_to image_tag("message.png", class: :image), root_path %>
+          <div class="icon_name">
+          やりとり
+          </div>
+        </div>
+        <div class="icon_image">
+          <% if user_signed_in? %>
+            <%= link_to image_tag("mypage.png", class: :image), "/users/#{current_user.id}" %>
+          <% else %>
+            <%= link_to image_tag("mypage.png", class: :image), new_user_session_path %>
+          <% end %>
+        </div>
         <div class="icon_name">
-        ホーム
+          My
         </div>
       </div>
-      <div class="icon_image">
-        <%= link_to image_tag("search.png", class: :image), root_path %>
-        <div class="icon_name">
-        検索
-        </div>
+    </footer>
+  </body>
       </div>
-      <div class="icon_image_q">
-        <div class="icon_name_q">
-        質問する
-        </div>
-        <%= link_to image_tag("question.png", class: :image), new_question_path %>
-      </div>
-      <div class="icon_image">
-        <%= link_to image_tag("message.png", class: :image), root_path %>
-        <div class="icon_name">
-        やりとり
-        </div>
-      </div>
-      <div class="icon_image">
-        <% if user_signed_in? %>
-          <%= link_to image_tag("mypage.png", class: :image), "/users/#{current_user.id}" %>
-        <% else %>
-          <%= link_to image_tag("mypage.png", class: :image), new_user_session_path %>
-        <% end %>
-        <div class="icon_name">
-        My
-        </div>
-      </div>
-  </footer>
 
 </html>
