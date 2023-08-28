@@ -39,11 +39,11 @@
     </div>
     <div class="main_limit">
       回答期限：
-        <% if @question.limit_id.present? %>
-          <% days_to_add = @question.limit_id %>
-          <% new_time_object = @question.updated_at + days_to_add.days %>
-          <%= new_time_object.strftime("%Y-%m-%d") %>
-        <% end %>
+      <% if @question.limit_id.present? %>
+        <% days_to_add = @question.limit_id %>
+        <% new_time_object = @question.updated_at + days_to_add.days %>
+        <%= new_time_object.strftime("%Y-%m-%d") %>
+      <% end %>
     </div>
   </div>
     <% if user_signed_in? && current_user.id == @question.user_id %>

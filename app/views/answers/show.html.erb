@@ -1,34 +1,87 @@
-回答の詳細
-タイトル：
-<%= @question.title %>
-ジャンル：
-<%= Genre.find(@question.genre_id).name %> <!-- ジャンル名に変換 -->
-質問内容：
-<%= @question.content %>
-    回答期限：
-    <% if @question.limit_id.present? %>
-      <% days_to_add = @question.limit_id %>
-      <% new_time_object = @question.updated_at + days_to_add.days %>
-      <%= new_time_object.strftime("%Y-%m-%d") %>
+<div class="question_show_main">
+  <div class="head_items">
+    <div class="main_genre">
+      ジャンル：<%= Genre.find(@question.genre_id).name %> <!-- ジャンル名に変換 -->
+    </div>
+    <div class="main_univ">
+      <%= Univ.find(@question.user.univ_id).name %>
+    </div>
+  </div>
+  <div class="main_title">
+    <%= @question.title %>
+  </div>
+  <div class="main_question_date">
+    投稿日：<%= @question.updated_at.strftime('%Y-%m-%d') %>
+  </div>
+  <div class="main_items">
+    <div class="main_content">
+      <div class="main_content_sub">
+        質問内容
+      </div>
+      <%= @question.content %>
+    </div>
+    <div class="main_content_image">
+      <% if @question.image.attached? %>
+        <%= image_tag @question.image, class: 'image-class' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="foot_items">
+    <div class="foot_sub_item">
+      <%= image_tag("hurt.png", class: :hurt) %>
+      <div class="hurt_qty">
+      2
+      </div>
+      <%= image_tag("comment.png", class: :comment) %>
+      <div class="comment_qty">
+      1
+      </div>
+    </div>
+    <div class="main_limit">
+      回答期限：
+      <% if @question.limit_id.present? %>
+        <% days_to_add = @question.limit_id %>
+        <% new_time_object = @question.updated_at + days_to_add.days %>
+        <%= new_time_object.strftime("%Y-%m-%d") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="answer_main">
+  <div class="answer_user_infos">
+    <div class="answer_user_image">
+      <% if @answer.user.image.attached? %>
+        <%= image_tag @answer.user.image %>
+      <% else %>
+        <%= image_tag("icon1.png") %>
+      <% end %>
+    </div>
+    <div class="answer_user_info">
+      <div class="answer_univ">
+        <%= Univ.find(@answer.user.univ_id).name %>
+      </div>
+      <div class="answer_nickname">
+        <%= User.find(@answer.user_id).nickname %>
+      </div>
+      <div class="answer_date">
+        投稿日：<%= @answer.updated_at.strftime('%Y-%m-%d') %>
+      </div>
+    </div>
+  </div>
+  <div class="answer_content">
+    <%= @answer.content %>
+  </div>
+  <div class="answer_image">
+    <% if @answer.image.attached? %>
+      <%= image_tag @answer.image, class: 'image-class' %>
     <% end %>
-<% if @question.image.attached? %>
-<%= image_tag @question.image, class: 'image-class' %>
-<% end %>
+  </div>
+</div>
 
-回答
-回答者名：
-<%= User.find(@answer.user_id).nickname %>
-質問内容：
-<%= @answer.content %>
-投稿日：
-<%= @answer.updated_at.strftime('%Y-%m-%d') %>
-<% if @answer.image.attached? %>
-<%= image_tag @answer.image, class: 'image-class' %>
-<% end %>
-
-
-<h4>コメント一覧</h4>
-<% if @comments.present? %>
+<div class="comments">
+  <h4>コメント一覧</h4>
+    <% if @comments.present? %>
       <% @comments.each do |comment| %>
         <p>
           <strong><%= User.find(comment.user_id).nickname %>：</strong>
@@ -36,14 +89,19 @@
         </p>
       <% end %>
     <% else %>
-          <strong><p>コメントはありません</p></strong>
+      <strong><p>コメントはありません</p></strong>
     <% end %>
-<br>コメントここから<br>
-    <% if user_signed_in? %>
-      <%= form_with(model: [@answer, @comment], url: question_answer_comments_path(@question, @answer),local: true) do |f| %>
-        <%= f.text_area :content, placeholder: "コメントする", rows: "2" %>
-        <%= f.submit "SEND" %>
-      <% end %>
-    <% else %>
-          <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+</div>
+<div class="comments">
+  コメントここから
+</div>
+<div class="comment_form">
+  <% if user_signed_in? %>
+    <%= form_with(model: [@answer, @comment], url: question_answer_comments_path(@question, @answer),local: true) do |f| %>
+      <%= f.text_area :content, placeholder: "コメントする", rows: "2" %>
+      <%= f.submit "SEND" %>
     <% end %>
+  <% else %>
+    <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+  <% end %>
+</div>

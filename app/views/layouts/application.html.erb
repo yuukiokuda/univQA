@@ -53,12 +53,15 @@
           <%# 検索 %>
           <%# </div> %>
         </div>
-        <div class="icon_image_q">
-          <%# <div class="icon_name_q"> %>
-          <%# 質問する %>
-          <%# </div> %>
-          <%= link_to image_tag("question.png", class: :image_q), new_question_path %>
-        </div>
+        <% if current_user.newuser == true %>   <!-- 在校生の場合 -->
+        <% else %> <!-- 新入生の場合 -->
+          <div class="icon_image_q">
+            <%# <div class="icon_name_q"> %>
+            <%# 質問する %>
+            <%# </div> %>
+            <%= link_to image_tag("question.png", class: :image_q), new_question_path %>
+          </div>
+        <% end %>
         <div class="icon_image">
           <%= link_to image_tag("message.png", class: :image), root_path %>
           <%# <div class="icon_name"> %>

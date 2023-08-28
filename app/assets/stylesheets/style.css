@@ -203,6 +203,23 @@ footer{
 /* ホーム画面 */
 /* question/index */
 
+.answer_selects{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 20px auto 10px auto;
+}
+
+.non_answer_select{
+  font-size: 24px;
+  margin: 0px 10px 0px 5px;
+}
+
+.answer_select{
+  font-size: 24px;
+  margin: 0px 0px 0px 5px;
+}
+
 .non_answer_main{
   padding: 0px 10px;
   margin: 20px 40px;
@@ -379,6 +396,20 @@ footer{
   border-radius: 10px;
 }
 
+
+
+/* コメント画面 */
+/* answers/show */
+.comments{
+  padding: 5px;
+  margin: 5px 40px;
+}
+
+.comment_form{
+  margin: 5px 30px;
+}
+
+
 /* 質問投稿画面 */
 /* question/new */
 .question_new_main{
@@ -427,4 +458,66 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
   background-color: #84d3ef;
+}
+
+/* マイページ画面 */
+/* user/show */
+.mypage_base{
+  display: flex;
+  justify-content: left;
+  margin: 10px 40px;
+  border-radius: 5px;
+  height: 150px;
+}
+
+.mypage_icon{
+  width: 30%;
+  height: auto;
+  margin: auto 0px;
+  border-radius: 20px;
+}
+
+.mypage_base_items{
+  margin: auto 20px;
+}
+
+.mypage_nickname{
+  margin: 5px 0px;
+  font-size: 40px;
+  font-weight: 600;
+
+}
+
+.mypage_univ{
+  margin: 5px 0px;
+}
+
+.mypage_user{
+  margin: 5px 0px;
+}
+
+.mypage_info{
+  margin: 0px 40px 10px 40px;
+}
+
+.mypage_faculty{
+  margin: 5px 0px;
+}
+
+.mypage_jenrus{
+  display: flex;
+  justify-content: center;
+}
+
+.mypage_jenru{
+  margin: 5px 5px;
+  padding: 3px 5px;
+  background-color: #84d3ef;
+  border-radius: 5%;
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+
+.mypage_info_profile{
+  margin: 5px;
 }
