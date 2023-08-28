@@ -1,14 +1,23 @@
-<p><%= @nickname %>さんについて</p>
-<% if @user.image.attached? %>
-<%= image_tag @user.image %>
-<% end %>
-<p>ニックネーム：<%= @nickname %></p>
-<p>大学名：<%= Univ.find(@user.univ_id).name %></p>
-<p><% if @newuser == 1 %>
-  <p>在校生</p>
-<% else %>
-  <p>新入生</p>
-<% end %></p>
+<div class="prof_base">
+  <div class="prof_icon">
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image %>
+    <% end %>
+  </div>
+  <div class="prof_base_items"> 
+    <div class="prof_nickname">
+      ニックネーム：<%= @nickname %>
+    </div>
+    <div class="prof_univ">
+      大学名：<%= Univ.find(@user.univ_id).name %>
+    </div>
+    <div class="prof_user">
+      <% if @newuser == 1 %>
+        在校生
+      <% else %>
+        新入生
+      <% end %>
+    </div>
 
 <% if @info.present? %>
 <p>学部学科名：<%= @info.faculty %></p>
