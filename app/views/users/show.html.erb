@@ -12,6 +12,9 @@
     <div class="mypage_univ">
       <%= Univ.find(@user.univ_id).name %>
     </div>
+    <div class="mypage_faculty">
+      〜<%= @info.faculty %>〜
+    </div>
     <div class="mypage_user">
         在校生
     </div>
@@ -44,10 +47,7 @@
 
 <div class="mypage_info">
   <% if @info.present? %>
-    <div class="mypage_faculty">
-      <%= @info.faculty %>
-    </div>
-      得意ジャンル
+      <div class="mypage_jenrus_p">〜得意ジャンル〜</div>
     <div class="mypage_jenrus">
       <div class="mypage_jenru">
         <%= Genre.find(@info.genre_first_id).name %>
@@ -166,13 +166,15 @@
 </div>
 
 
-<% if current_user.newuser == true %>
+<% if @user.newuser == true %> 
   <% if @info.present? %>
     <%= link_to "プロフィールの編集", edit_user_path(current_user) %>
     <%= link_to "先輩学生情報の修正", edit_info_olduser_path(current_user.id) %>
+    学生証の認証
   <% else %>
     <%= link_to "プロフィールの編集", edit_user_path(current_user) %>
     <%= link_to "先輩学生情報の追加", new_info_olduser_path(current_user.id) %>
+    学生証の認証
   <% end %>
 <% else %>
   <%= link_to "プロフィールの編集", edit_user_path(current_user) %>

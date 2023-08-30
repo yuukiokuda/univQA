@@ -501,9 +501,8 @@ form input[type="submit"]:hover {
 
 .mypage_nickname{
   margin: 5px 0px;
-  font-size: 40px;
+  font-size: 150%;
   font-weight: 600;
-
 }
 
 .mypage_univ{
@@ -522,18 +521,24 @@ form input[type="submit"]:hover {
   margin: 5px 0px;
 }
 
+.mypage_jenrus_p{
+  text-align: center;
+}
 .mypage_jenrus{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .mypage_jenru{
+  width: 30%;
+  height: auto;
+  text-align: center;
   margin: 5px 5px;
   padding: 3px 5px;
-  background-color: #84d3ef;
-  border-radius: 5%;
-  color: #ffffff;
-  font-size: 0.8rem;
+  background-color: #d3d3d3;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .mypage_info_profile{
