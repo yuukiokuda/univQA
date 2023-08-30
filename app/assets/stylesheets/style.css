@@ -462,19 +462,37 @@ form input[type="submit"]:hover {
 
 /* マイページ画面 */
 /* user/show */
-.mypage_base{
+.mypage_base-new{
   display: flex;
   justify-content: left;
   margin: 10px 40px;
   border-radius: 5px;
   height: 150px;
+  background-color: #ffd6f1;
+}
+
+.mypage_base-old{
+  display: flex;
+  justify-content: left;
+  margin: 10px 40px;
+  border-radius: 5px;
+  height: 150px;
+  background-color: #d6faff;
 }
 
 .mypage_icon{
   width: 30%;
-  height: auto;
+  height: 100%;
   margin: auto 0px;
   border-radius: 20px;
+  text-align:center;
+}
+
+.mypage_icon_image{
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mypage_base_items{

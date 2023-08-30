@@ -1,4 +1,5 @@
-<div class="mypage_base">
+<% if @user.newuser == true %>   <!-- 在校生の場合 -->
+<div class="mypage_base-old">   <!-- レイアウトを条件分岐させる -->
   <div class="mypage_icon">
     <% if @user.image.attached? %>
       <%= image_tag @user.image, class: 'mypage_icon_image' %>
@@ -12,14 +13,35 @@
       <%= Univ.find(@user.univ_id).name %>
     </div>
     <div class="mypage_user">
-      <% if @newuser == 1 %>
         在校生
-      <% else %>
-        新入生
-      <% end %>
     </div>
   </div>
 </div>
+
+<% else %>   <!-- 新入生の場合 -->
+
+<div class="mypage_base-new">   <!-- レイアウトを条件分岐させる -->
+  <div class="mypage_icon">
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image, class: 'mypage_icon_image' %>
+    <% end %>
+  </div>
+  <div class="mypage_base_items"> 
+    <div class="mypage_nickname">
+      <%= @nickname %>
+    </div>
+    <div class="mypage_univ">
+      <%= Univ.find(@user.univ_id).name %>
+    </div>
+    <div class="mypage_user">
+        新入生
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+
 <div class="mypage_info">
   <% if @info.present? %>
     <div class="mypage_faculty">
@@ -44,7 +66,7 @@
 </div>
 
 <div class="mypage_contents">
-<% if @newuser == 1 %>   <!-- 在校生の場合 -->
+<% if @user.newuser == true %>   <!-- 在校生の場合 -->
   <% if @answers.present? %>
   <% @answers.each do |answer| %>
   <div class="answer_main">

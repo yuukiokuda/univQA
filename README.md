@@ -12,17 +12,17 @@ https://univqa-39536.onrender.com/users/sign_in
 [![Image from Gyazo](https://i.gyazo.com/0f577987b782d24bf2ce4a019f0d167f.png)](https://gyazo.com/0f577987b782d24bf2ce4a019f0d167f)
 
 # テスト用アカウント
-＜新入生＞
+＜新入生テスト＞
 メールアドレス：newusertest@test
-パスワード：123456
+パスワード：test0000
 
-＜在校生1＞
-メールアドレス：oldusertest@test
-パスワード：123456
+＜在校生テスト1＞
+メールアドレス：oldusertest1@test
+パスワード：test1111
 
-＜在校生2＞
+＜在校生テスト2＞
 メールアドレス：oldusertest2@test
-パスワード：123456
+パスワード：test2222
 
 # 利用方法
 ## 新入生保護者（質問ユーザー）が質問を投稿する
