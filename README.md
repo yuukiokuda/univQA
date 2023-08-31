@@ -66,7 +66,6 @@ https://univqa-39536.onrender.com/users/sign_in
 
 # アプリケーションのイメージ（PDF）
 https://acrobat.adobe.com/id/urn:aaid:sc:AP:d72286d8-cbc2-443b-a4ab-324e4fb8bf3b
-※閲覧にはadobeアカウントが必要です。
 
 # 洗い出した要件
 https://docs.google.com/spreadsheets/d/1RzgVttb4n-WSAy5XbLYN6Vf--Hd47Bic6_9dtbukD2g/edit#gid=0
